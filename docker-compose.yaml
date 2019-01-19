@@ -1,0 +1,21 @@
+version: '3'
+services:
+  engelsystem:
+    build: .
+    restart: always
+    ports:
+    - 127.0.0.1:8080:80
+    links:
+    - mysql
+    depends_on:
+    - mysql
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+    - 127.0.0.1:3310:3306
+    environment:
+    - MYSQL_ROOT_PASSWORD=superangel
+    - MYSQL_DATABASE=engelsystem
+    - MYSQL_USER=angel
+    - MYSQL_PASSWORD=heaven
